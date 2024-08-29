@@ -1,0 +1,8 @@
+secretfolder/
+*.log
+*.fdb_latexmk
+*.out
+*.fls
+*.pdf
+*.synctex.gz
+*.aux
