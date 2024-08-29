@@ -1,0 +1,110 @@
+\documentclass{article}
+
+
+% if you need to pass options to natbib, use, e.g.:
+%     \PassOptionsToPackage{numbers, compress}{natbib}
+% before loading neurips_2023
+
+
+% ready for submission
+\usepackage[final]{neurips_2023}
+
+
+% to compile a preprint version, e.g., for submission to arXiv, add add the
+% [preprint] option:
+%     \usepackage[preprint]{neurips_2023}
+
+
+% to compile a camera-ready version, add the [final] option, e.g.:
+%     \usepackage[final]{neurips_2023}
+
+
+% to avoid loading the natbib package, add option nonatbib:
+%    \usepackage[nonatbib]{neurips_2023}
+
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{amsmath}
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{xcolor}         % colors
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{subfig}
+
+\bibliographystyle{plainnat}
+
+
+\title{CSCE 679 | Cereals}
+
+
+% The \author macro works with any number of authors. There are two commands
+% used to separate the names and addresses of multiple authors: \And and \AND.
+%
+% Using \And between authors leaves it to LaTeX to determine where to break the
+% lines. Using \AND forces a line break at that point. So, if LaTeX puts 3 of 4
+% authors names on the first line, and the last on the second line, try using
+% \AND instead of \And before the third author name.
+
+\author{%
+  Muhammed U. Ersoy\\
+  M.S. ECEN Student\\
+  Texas A\&M University\\
+  \texttt{mue@tamu.edu} \\
+ }
+
+\begin{document}
+\maketitle
+
+\section{Insights}
+    \begin{enumerate}
+        \item Manufacturer P (ost) has significantly higher mean calories at $195$ \textit{KCal} per cup. The lowest mean calories of the bunch is R (Raltson Purina) at $125$ \texit{KCal}.
+        \item Manufacturer N (abisco) has the highest mean weight per cup at $2$ \texit{oz}.
+        \item The third shelf has significantly higher mean calories at $180$ \texit{KCal}.
+        \item All three of the H(ot) cereals in the data had a missing measurement while only $9$ out of the $74$ cold ones had missing measurements. In addition, the only cereal from A(merican Home Food Products) had a missing measurement.
+        \item The strongest correlation between Calories and the three main macro-nutrients is;
+            \begin{enumerate}
+                \item Carbohydrates (0.79)
+                \item Protein (0.70)
+                \item Fat (0.60)
+            \end{enumerate}
+    \end{enumerate}
+
+\section{Workflow}
+I started by importing the data into pandas. I started examining the data by sampling it, and observing the data types presented.
+Next; I identified the categorical data (Manufacturer, Type, Shelf), and numerical data. Once I took a good look, I noticed that there were `-1.0` values in the data where it wouldn't make sense to have negative numbers based on the column headers.
+After consulting with the manual for the data, I decided to filter these out. Based on this, 13 of the 77 rows had some type of missing data. Next I started pivoting and grouping the table on one or two of the categorical headers. After this, I started analyzing the standard statistics of the
+data (e.g. mean, variance, median). After this, I had the idea of normalizing the data by the serving size (cups) and deriving my insights from there. Finally, I filtered out the categorical headers, and calculated a correlation matrix to better understand the relationship between different attributes in the data.
+
+\section{Challenges}
+
+I am a big fan of tabular formats, if you know how to manipulate tables, build pivots, groupings they can be a great tool.
+
+
+\begin{table}[H]
+\begin{tabular}{lllllll}
+\cline{2-7}
+\multicolumn{1}{c}{\textbf{}}             & \multicolumn{6}{c}{\textbf{Calories}}                                                                                                                                                                              \\ \hline
+\multicolumn{1}{c}{\textbf{Manufacturer}} & \multicolumn{1}{c}{\textbf{mean}} & \multicolumn{1}{c}{\textbf{std}} & \multicolumn{1}{c}{\textbf{min}} & \multicolumn{1}{c}{\textbf{25\%}} & \multicolumn{1}{c}{\textbf{75\%}} & \multicolumn{1}{c}{\textbf{max}} \\ \hline
+G                                         & 137.787879                        & 44.996595                        & 73.333333                        & 110.000000                        & 146.666667                        & 260.000000                       \\
+K                                         & 149.671017                        & 45.773791                        & 100.000000                       & 110.000000                        & 180.000000                        & 238.805970                       \\
+N                                         & 160.259310                        & 44.913725                        & 134.328358                       & 134.328358                        & 173.224785                        & 212.121212                       \\
+P                                         & 194.757760                        & 122.899879                       & 82.706767                        & 113.636364                        & 179.104478                        & 440.000000                       \\
+Q                                         & 135.850746                        & 55.900693                        & 50.000000                        & 120.000000                        & 160.000000                        & 200.000000                       \\
+R                                         & 124.852111                        & 20.822995                        & 97.345133                        & 110.000000                        & 134.328358                        & 149.253731                       \\ \hline
+\end{tabular}
+\end{table}
+
+However, I cannot fault the convenience and efficiency of a histogram or a violin chart at conveying 
+information about the distribution of data at a glance. For example, just looking at the initial insight, we might make some determinations about the manufacturer P(ost), however looking at the table they have the highest max,but not the highest minimum value. Their variance is an order of magnitude higher compared to anyone else.
+Even this does not give us the full picture; some of the manufacturers have 20+ cereals. This is only a small slice of the distribution of data. Not to mention; it took me a good look at the data to get to this point. A couple of plots would have a much higher information density, and you would be able infer a lot of this information at a glance.
+
+
+\bibliography{default}
+\end{document}
+
+
