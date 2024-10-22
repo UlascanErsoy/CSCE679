@@ -1,0 +1,29 @@
+
+/* Add basic styling for the bar chart */
+svg {
+   font-family: 'Arial', sans-serif;
+}
+.bar {
+   fill: steelblue;
+}
+.bar:hover {
+   fill: orange;
+}
+
+circle {
+   fill: steelblue;
+}
+circle:hover {
+   fill: orange;
+}
+
+#tooltip {
+   position: absolute;
+   opacity: 0;
+   background: lightgray;
+   padding: 5px;
+   border-radius: 5px;
+   pointer-events: none; 
+}
+
+
